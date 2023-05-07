@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <!--바벨을 추가하여 브라우저가 읽을 수 있도록 수정-->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!--script 태그에 type을 추가하여 바벨이 변환할 수 있도록 설정-->
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    let counter = 0;
+
+    function countUp() {
+      counter = counter + 1;
+      ReactDOM.render(<Container />, root);
+    }
+
+    const Container = () => (
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
+      </div>
+    );
+
+    // render(엘리먼트, 위치)
+    // 마찬가지로 render 함수에서도 JSX 컴포넌트를 사용할 수 있다
+    // 단, 다른 컴포넌트와 동일하게 대문자로 시작해야 하며 함수로 선언해야 한다
+    ReactDOM.render(<Container />, root);
+  </script>
+</html>
