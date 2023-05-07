@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      // state를 변경하는 방법
+      // 1. 함수를 이용해 직접 변경 -> setCounter(100)
+      // 2. 이전 값을 가지고 변경 -> setCounter((prev) => prev + 1) (setCounter(counter+1)과 동일하지만 왼쪽같이 사용하는 것이 더 안전)
+      const [counter, setCounter] = React.useState(0);
+
+      // state를 변경하는 함수에는 재렌더링 기능이 포함되어 있다
+      // 따라서, 자동으로 state를 변화시키면 재렌더링 해준다
+      const onClick = () => {
+        setCounter(counter + 1)
+      }
+
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
