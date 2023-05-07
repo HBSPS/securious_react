@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [minutes, setMinutes] = React.useState();
+
+      // event를 인자로 받아서 event에 접근할 수 있다
+      const onChange = (event) => {
+        setMinutes(event.target.value)
+      }
+
+      // <label for="minutes">Minutes</label> -> for은 JS에서 사용되기 때문에 에러가 발생한다. 따라서, for 대신 htmlFor를 사용해야 한다.
+      return (
+        <div>
+          <h1>Converter</h1>
+          <label htmlFor='minutes'>Minutes</label>
+          <input
+            value={minutes}
+            onChange={onChange}
+            id='minutes'
+            type='number'
+            placeholder='Minutes'
+          />
+          <label htmlFor='hours'>Hours</label>
+          <input id='hours' type='number' placeholder='Hours' />
+        </div>
+      );
+    }
+
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
